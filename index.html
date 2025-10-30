@@ -1,5 +1,5 @@
 <!-- Time Log 
-    Hours Spent on DEV -> 13 Hours
+    Hours Spent on DEV -> 15 Hours
 -->
 <!DOCTYPE html>
 <html>
@@ -39,7 +39,7 @@
             .section.home:before{
                 content: '';
                 background-image: url('img/Home_BG_HQ.jpg');
-                background-size: 150% auto;
+                background-size: auto 100%;
                 background-position: -16rem 0;
                 background-repeat: no-repeat;
                 position: absolute;
@@ -73,6 +73,7 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: -6rem 0;
+                background-attachment: fixed;
             }
 
             .section.contact-us{
@@ -125,7 +126,6 @@
                 background-repeat: no-repeat;
                 padding: 1rem;
                 border-radius: 1rem;
-                box-shadow: .25rem .25rem .5rem rgba(0, 0, 0, 0.75);
             }
 
             .nav-container > .nav-btn-group{
@@ -139,15 +139,20 @@
                 background: #fff;
                 padding: 1rem;
                 border-radius: 1rem;
-                box-shadow: .25rem .25rem .5rem rgba(0, 0, 0, 0.75);
             }
 
             .nav-btn-group.socials{
                 margin-right: 3rem;
             }
 
+            .nav-btn-group.mobile{
+                display: none;
+            }
+
             .nav-btn,
-            .nav-icon-btn{
+            .nav-icon-btn,
+            .footer-nav-btn,
+            .footer-social-btn{
                 text-transform: uppercase;
                 padding: .5rem 1rem;
                 font-size: 1rem;
@@ -156,6 +161,10 @@
                 color: #aaa;
                 position: relative;
                 border-right: 1px solid #aaa;
+            }
+
+            .footer-social-btn{
+                border:none;
             }
             
             .nav-btn:before{
@@ -170,30 +179,72 @@
             }
 
             .nav-btn:last-of-type,
-            .nav-icon-btn:last-of-type{
+            .nav-icon-btn:last-of-type,
+            .footer-nav-btn:last-of-type,
+            .footer-social-btn:last-of-type{
                 border: none;
             }
 
-            .nav-icon-btn i{
+            .nav-icon-btn i,
+            .footer-social-btn i{
                 font-size: 2rem;
                 color: #aaa;
             }
 
-            .nav-btn:hover{
+            .nav-btn:hover,
+            .footer-nav-btn:hover{
                 transition: .5s;
                 color: var(--primary-color);
             }
 
-            .nav-icon-btn:hover i{
+            .nav-icon-btn:hover i,
+            .footer-social-btn:hover i{
                 transition: .5s;
             }
 
-            #facebook:hover i{
+            #facebook:hover i,
+            #footer-facebook:hover i{
                 color: #1877F2;
             }
 
-            #linkedin:hover i{
+            #linkedin:hover i,
+            #footer-linkedin:hover i{
                 color: #0a66c2;
+            }
+
+            .mobile-menu-toggle{
+                display: none;
+            }
+
+            .mobile-menu-btn{
+                display: block;
+                position: relative;
+                width: 1.5rem;
+                height: 1rem;
+                cursor: pointer;
+            }
+
+            .mobile-menu-btn span{
+                position: absolute;
+                top: calc(50% - .125rem);
+                left: 0;
+                width: 100%;
+                height: .25rem;
+                background: #666;
+            }
+
+            .mobile-menu-btn:hover span{
+                transition: .5s;
+                background: var(--primary-color);
+            }
+
+            .mobile-menu-btn span:first-child{
+                top: 0;
+            }
+
+            .mobile-menu-btn span:last-child{
+                top:auto;
+                bottom: 0;
             }
 
             .section-content{
@@ -213,7 +264,7 @@
             }
 
             .section-content.services{
-                width: calc(100% - 24rem);
+                width: calc(100% - 12rem);
                 margin: 6rem 12rem;
             }
 
@@ -278,7 +329,8 @@
             .section-content.services .section-text,
             .section-content.about-us .section-text,
             .section-content.about-us .section-ul_text,
-            .section-content.contact-us .section-text{
+            .section-content.contact-us .section-text,
+            .section-content.personel .section-text{
                 color: #fff;
                 padding: 1rem;
             }
@@ -294,13 +346,14 @@
                 flex-direction: row;
                 align-items: center;
                 justify-content: center;
+                flex-wrap: wrap;
             }
 
             .card{
                 width: 16rem;
                 height: 16rem;
                 position: relative;
-                margin: 0 1rem;
+                margin: 1rem 1rem;
                 background: #fff;
                 border-radius: 1rem;
             }
@@ -512,6 +565,30 @@
                 text-align: center;
             }
 
+            .footer-navigation,
+            .footer-row{
+                width: calc(100% - 8rem);
+                margin-left: 4rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                margin-top: 2rem;
+            }
+
+            .footer-row{
+                margin-top: .5rem;
+            }
+
+            .footer-row:last-child{
+                padding-bottom: 5rem;
+            }
+
+            .footer-row p{
+                color: #333;
+                font-size: 1.25rem;
+            }
+
             .hidden{
                 display: none;
             }
@@ -522,6 +599,91 @@
 
             .slick-center:after{
                 opacity: 0;
+            }
+        </style>
+        <style>
+            @media (max-width: 1200px){
+                .nav-container .logo{
+                    margin-left: 1rem;
+                }
+
+                .nav-container .nav-btn-group.navigation{
+                    border-radius: 1rem 0 0 1rem;
+                    margin-right: 0;
+                }
+
+                .nav-container .nav-btn-group.socials{
+                    border-radius: 0 1rem 1rem 0;
+                    margin-left: 0;
+                    margin-right: 1rem;
+                }
+
+                .section.home:before{
+                    background-position: center;
+                }
+
+                .section-content,
+                .section-content.services{
+                    margin: 6rem auto;
+                }
+
+                .section.about-us{
+                    background-position: -20rem;
+                    background-size: auto 100%;
+                }
+
+                .section-content.about-us{
+                    margin-left: 24rem;
+                    width: calc(100% - 24rem);
+                }
+
+                .section-group{
+                    margin-right: 0;
+                }
+
+                .section-content.about-us .section-group{
+                    width: 100%;
+                }
+
+                .section-content.about-us .section-header{
+                    width: fit-content;
+                    max-width: calc(100vw - 30rem);
+                }
+
+                .section-content.about-us .section-text,
+                .section-content.about-us .section-ul_text{
+                    width: fit-content;
+                    max-width: calc(100vw - 30rem);
+                }
+            }
+
+            @media (max-width: 1024px){
+                .nav-container .nav-btn-group.navigation,
+                .nav-container .nav-btn-group.socials{
+                    display: none;
+                }
+
+                .nav-container .nav-btn-group.mobile{
+                    display: flex;
+                    margin-left: auto;
+                    margin-right: 1rem;
+                }
+            }
+
+            @media (max-width: 600px){
+                .section-content.home,
+                .section-content.services{
+                    width: fit-content;
+                }
+                .section-header{
+                    font-size: 3rem;
+                    margin: 0 auto 1rem auto;
+                }
+
+                .section-text{
+                    font-size: 1.25rem;
+                    text-align: center;
+                }
             }
         </style>
     </head>
@@ -537,9 +699,16 @@
                     <a href = '#contact' class = 'nav-btn'>Contact</a>
                 </div>
                 <div class = 'nav-btn-group socials'>
-                    <a href = '#' id='facebook' class = 'nav-icon-btn'><i class="fa-brands fa-square-facebook"></i></a>
-                    <a href = '#' id='linkedin' class = 'nav-icon-btn'><i class="fa-brands fa-linkedin"></i></a>
-
+                    <a href = 'https://www.facebook.com/people/Guard-Focus/61564166431964/' id='facebook' class = 'nav-icon-btn'><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href = 'https://www.linkedin.com/company/guardfocus-risk-solutions-security-services/' id='linkedin' class = 'nav-icon-btn'><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <div class = 'nav-btn-group mobile'>
+                    <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+                    <label for="mobile-menu-toggle" class="mobile-menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
                 </div>
             </div>
         </div>
@@ -625,34 +794,23 @@
                 <h1 class = 'section-header'>
                     Key Personnel
                 </h1>
+                <p class = 'section-text'>
+                    Effective risk management is built on a foundation of deep operational experience. Meet the key personnel who architect and execute the strategies that protect your assets, people, and reputation.
+                </p>
                 <div class = 'personel-carousel'>
                     <div class = 'personel-card'>
                         <div class = 'personel-photo'>
                             <img src="" alt="Personal Photo" width="100%" height="100%">
                         </div>
-                        <p class = 'personel-name'>John Doe #0</p>
-                        <p class = 'personel-title'>Job Position</p>
+                        <p class = 'personel-name'>Shaun Loss</p>
+                        <p class = 'personel-title'>Managing Director</p>
                     </div>
                     <div class = 'personel-card'>
                         <div class = 'personel-photo'>
                             <img src="" alt="Personal Photo" width="100%" height="100%">
                         </div>
-                        <p class = 'personel-name'>John Doe #1</p>
-                        <p class = 'personel-title'>Job Position </p>
-                    </div>
-                    <div class = 'personel-card'>
-                        <div class = 'personel-photo'>
-                            <img src="" alt="Personal Photo" width="100%" height="100%">
-                        </div>
-                        <p class = 'personel-name'>John Doe #2</p>
-                        <p class = 'personel-title'>Job Position</p>
-                    </div>
-                    <div class = 'personel-card'>
-                        <div class = 'personel-photo'>
-                            <img src="" alt="Personal Photo" width="100%" height="100%">
-                        </div>
-                        <p class = 'personel-name'>John Doe #3</p>
-                        <p class = 'personel-title'>Job Position</p>
+                        <p class = 'personel-name'>Gavin Stowman</p>
+                        <p class = 'personel-title'>Supervisor</p>
                     </div>
                 </div>
             </div>
@@ -704,7 +862,23 @@
             </div>
         </div>
         <div class = 'footer'>
-            
+            <div class = 'footer-navigation'>
+                <a href='#home' class = 'footer-nav-btn'>Home</a>
+                <a href='#services' class = 'footer-nav-btn'>Services</a>
+                <a href='#about' class = 'footer-nav-btn'>About Us</a>
+                <a href='#personel' class = 'footer-nav-btn'>Personnel</a>
+                <a href='#contact' class = 'footer-nav-btn'>Contact</a>
+            </div>
+            <div class = 'footer-row'>
+                <a href='https://www.facebook.com/people/Guard-Focus/61564166431964/' id='footer-facebook' class = 'footer-social-btn'><i class="fa-brands fa-square-facebook"></i></a>
+                <a href='https://www.linkedin.com/company/guardfocus-risk-solutions-security-services/' id='footer-linkedin' class = 'footer-social-btn'><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <div class = 'footer-row'>
+                <p>53 Avondale Road, Kabega Park, Gqeberha, 6059</p>
+            </div>
+            <div class = 'footer-row'>
+                <p>© 2025 Guard Focus Security Risk Solutions. All rights reserved.</p>
+            </div>
         </div>
     </body>
     <script type="text/javascript">
